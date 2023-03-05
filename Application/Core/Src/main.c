@@ -44,7 +44,7 @@
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-uint8_t APP_Version[2] = {MAJOR< MINOR};
+uint8_t APP_Version[2] = {MAJOR, MINOR};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -90,7 +90,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  printf("Application %d:%d Started!!!\n", APP_Version[0], APP_Version[1]);
+  printf("Application v%d:%d Started!!!\n", APP_Version[0], APP_Version[1]);
   /* USER CODE END 2 */
 
   /* Infinite loop */

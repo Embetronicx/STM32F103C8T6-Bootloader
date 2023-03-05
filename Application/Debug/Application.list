@@ -109,7 +109,7 @@ int main(void)
   MX_USART1_UART_Init();
  800455c:	f000 f856 	bl	800460c <MX_USART1_UART_Init>
   /* USER CODE BEGIN 2 */
-  printf("Application %d:%d Started!!!\n", APP_Version[0], APP_Version[1]);
+  printf("Application v%d:%d Started!!!\n", APP_Version[0], APP_Version[1]);
  8004560:	4b09      	ldr	r3, [pc, #36]	; (8004588 <main+0x3c>)
  8004562:	781b      	ldrb	r3, [r3, #0]
  8004564:	4619      	mov	r1, r3
