@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
   char mode[]={'8','N','1',0}; /* *-bits, No parity, 1 stop bit */
   char bin_name[1024];
   int ex = 0;
+  int block_counter = 0;
   FILE *Fptr = NULL;
 
   do
@@ -173,11 +174,17 @@ int main(int argc, char *argv[])
         ex = -1;
         break;
       }
-      if( ( i % ETX_OTA_MAX_BLOCK_SIZE ) == 0 )
+      block_counter = (i + ETX_OTA_MAX_BLOCK_SIZE - 1) / ETX_OTA_MAX_BLOCK_SIZE;
+      if ((i > 0 && (i % ETX_OTA_MAX_BLOCK_SIZE == 0)) || i >= app_size)
       {
-        printf("Block %d Transmitted...\r\n", i/ETX_OTA_MAX_BLOCK_SIZE);
+          printf("Block %d Transmitted...\r\n", block_counter);
       }
-      
+	  
+      // Check the final block after the loop ends
+      if (i == app_size) {
+          block_counter = (i + ETX_OTA_MAX_BLOCK_SIZE - 1) / ETX_OTA_MAX_BLOCK_SIZE;
+          printf("Final Block %d Transmitted...\r\n", block_counter);
+      }
     }
 
     if( ex < 0 )
